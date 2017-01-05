@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @restaurant.name
+%p
+  %strong Address:
+  = @restaurant.address
+%p
+  %strong Phone:
+  = @restaurant.phone
+%p
+  %strong Website:
+  = @restaurant.website
+= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-link"
+|
+\#{link_to 'Back', restaurants_path, class: "btn btn-link"}
