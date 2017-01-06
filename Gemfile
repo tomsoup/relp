@@ -25,7 +25,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'carrierwave'
 gem "fog-aws"
 gem 'haml'
-gem "figaro"
+gem 'figaro'
+gem 'devise'
+gem 'devise-bootstrap-views'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
