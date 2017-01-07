@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  resources :reviews, except: [:show, :index]
-  
+
   devise_for :users
   get 'pages/about'
 
   get 'pages/contact'
 
-  resources :restaurants
+  resources :restaurants do
+      resources :reviews, except: [:show, :index]
+    end
 
   root 'restaurants#index'
   # The priority is based upon order of creation: first created -> highest priority.

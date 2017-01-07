@@ -1,0 +1,26 @@
+= form_for([@restaurant, @review], :html => { :class => "form-horizontal review" }) do |f|
+  - if @review.errors.any?
+    #error_expl.panel.panel-danger
+      .panel-heading
+        %h3.panel-title
+          = pluralize(@review.errors.count, "error")
+          prohibited this review from being saved:
+      .panel-body
+        %ul
+          - @review.errors.full_messages.each do |msg|
+            %li= msg
+  .form-group
+    = f.label :rating, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :rating, :class => 'form-control'
+    = f.error_span(:rating)
+  .form-group
+    = f.label :comment, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :comment, :class => 'form-control'
+    = f.error_span(:comment)
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+        '#', :class => 'btn btn-default'                             |
