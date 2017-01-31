@@ -22,9 +22,19 @@
       %h3 No reviews yet. Maybe be the first to write one?
     -else
       - @reviews.each do |review|
-        %p= review.rating
+        %div{class: "star-rating", "data-score" => review.rating}
+
         %p= review.comment
 
 = link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-link"
 |
 \#{link_to 'Back', restaurants_path, class: "btn btn-link"}
+
+:javascript
+  $('.star-rating').raty({
+    path: 'https://s3-us-west-2.amazonaws.com/reslp/stars/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+      }
+    });
