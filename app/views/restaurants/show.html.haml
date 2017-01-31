@@ -1,20 +1,29 @@
-%p#notice= notice
+.row
+  .col-sm-3
+    %p#notice= notice
 
-= image_tag @restaurant.image_url
-%p
-  %strong Name:
-  = @restaurant.name
-%p
-  %strong Address:
-  = @restaurant.address
-%p
-  %strong Phone:
-  = @restaurant.phone
-%p
-  %strong Website:
-  = @restaurant.website
+    = image_tag @restaurant.image_url
+    %h2
+      = @restaurant.name
+    %p
+      %strong Address:
+      = @restaurant.address
+    %p
+      %strong Phone:
+      = @restaurant.phone
+    %p
+      %strong Website:
+      = link_to @restaurant.website, @restaurant.website
 
-= link_to 'Write Review', new_restaurant_review_path(@restaurant), class: "btn btn-primary"
+    = link_to 'Write Review', new_restaurant_review_path(@restaurant), class: "btn btn-primary"
+
+  .col-sm-9
+    - if @reviews.blank?
+      %h3 No reviews yet. Maybe be the first to write one?
+    -else
+      - @reviews.each do |review|
+        %p= review.rating
+        %p= review.comment
 
 = link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-link"
 |
