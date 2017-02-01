@@ -1,28 +1,30 @@
 = form_for(@restaurant, :html => { multipart: true }) do |f|
   - if @restaurant.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@restaurant.errors.count, "error")
-        prohibited this restaurant from being saved:
-      %ul
-        - @restaurant.errors.full_messages.each do |message|
-          %li= message
+    #error_explanation.panel.panel-danger
+      .panel-heading
+        %h3.panel-title
+          = pluralize(@restaurant.errors.count, "error")
+          prohibited this review from being saved:
+      .panel-body
+        %ul
+          - @restaurant.errors.full_messages.each do |msg|
+            %li= msg
   .form-group
     = f.label :name
     %br/
-    = f.text_field :name, class: "form-control"
+    = f.text_field :name, class: "form-control", placeholder: "Micky Ds"
   .form-group
     = f.label :address
     %br/
-    = f.text_field :address, class: "form-control"
+    = f.text_field :address, class: "form-control", placeholder: "123 ABC Avenue, New york, NY 11355"
   .form-group
     = f.label :phone
     %br/
-    = f.text_field :phone, class: "form-control"
+    = f.text_field :phone, class: "form-control", placeholder: "(123) 456-7890"
   .form-group
     = f.label :website
     %br/
-    = f.text_field :website, class: "form-control"
+    = f.text_field :website, class: "form-control", placeholder: "https://example.com"
   .form-group
     = f.label :image
     %br/
