@@ -28,6 +28,7 @@ gem 'haml'
 gem 'figaro'
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'searchkick'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password

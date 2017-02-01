@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'pages/contact'
 
   resources :restaurants do
+    collection do #collection means search would apply to all restaurants
+        get 'search'
+      end
       resources :reviews, except: [:show, :index]
     end
 
