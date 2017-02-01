@@ -21,6 +21,14 @@
 
     = link_to 'Write Review', new_restaurant_review_path(@restaurant), class: "btn btn-primary"
 
+    %br
+    %br
+    %br
+
+    %iframe{:allowfullscreen => "", :frameborder => "0", :height => "230", :src => "https://www.google.com/maps/embed/v1/place?key=AIzaSyCM03glITYQMSnyZ1-ojBJLkFVGndmBIFk&q=#{ @restaurant.address.parameterize}&zoom=18", :style => "border:0", :width => "230"}
+
+
+
   .col-sm-9
     - if @reviews.blank?
       %h3 No reviews yet. Maybe be the first to write one?
