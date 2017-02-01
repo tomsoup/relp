@@ -5,6 +5,10 @@
     = image_tag @restaurant.image_url
     %h2
       = @restaurant.name
+
+    %div{class: "star-rating", "data-score" => @avg_rating}
+    %p
+      = "#{@reviews.length} reviews"
     %p
       %strong Address:
       = @restaurant.address
@@ -24,7 +28,7 @@
       - @reviews.each do |review|
         %div{class: "star-rating", "data-score" => review.rating}
 
-        %p= review.comment
+        %p= h(review.comment).gsub(/\n/, '<br/>').html_safe
 
 = link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-link"
 |

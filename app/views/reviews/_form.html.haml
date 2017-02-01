@@ -9,11 +9,7 @@
         %ul
           - @review.errors.full_messages.each do |msg|
             %li= msg
-  .form-group
-    = f.label :rating, :class => 'control-label col-lg-2'
-    .col-lg-10
-      = f.text_field :rating, :class => 'form-control'
-    = f.error_span(:rating)
+  #star-rating
   .form-group
     = f.label :comment, :class => 'control-label col-lg-2'
     .col-lg-10
@@ -22,3 +18,10 @@
   .form-group
     .col-lg-offset-2.col-lg-10
       = f.submit nil, :class => 'btn btn-primary'
+
+
+:javascript
+  $('#star-rating').raty({
+    path: 'https://s3-us-west-2.amazonaws.com/reslp/stars/',
+    scoreName: 'review[rating]'
+    });
